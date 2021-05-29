@@ -10,7 +10,7 @@ using pizzaClient.Models;
 namespace pizzaClient.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20210527052250_init")]
+    [Migration("20210528051843_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

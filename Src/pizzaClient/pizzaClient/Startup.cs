@@ -29,9 +29,6 @@ namespace pizzaClient
             services.AddScoped<IPizza<Pizza>, PizzaService>();
             services.AddScoped<IOrder<Order>, OrderService>();
             services.AddControllersWithViews();
-            services.AddMemoryCache();
-            services.AddSession();
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +52,7 @@ namespace pizzaClient
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Pizza}/{action=Index}/{id?}");
             });
         }
     }

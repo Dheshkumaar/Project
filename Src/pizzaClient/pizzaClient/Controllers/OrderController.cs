@@ -34,8 +34,10 @@ namespace pizzaClient.Controllers
             try
             {
                 _repo.AddOrder(order);
-                return View("Success",order);
-                
+                int pizza_id = order.PizzaId;
+                Pizza p = _pizza.Get(pizza_id);
+                TempData["PizzaName"] = p.PizzaName;
+                return View("Success",order); 
             }
             catch (Exception e)
             {
@@ -48,6 +50,7 @@ namespace pizzaClient.Controllers
         {
             int pizza_id = order.PizzaId;
             Pizza p = _pizza.Get(pizza_id);
+            TempData["pizza_Id"] = p.PizzaId;
             TempData["PizzaName"] = p.PizzaName;
             TempData["PizzaPrice"] = p.Price;
             return View(order);

@@ -17,19 +17,19 @@
     </style>
 </head>
 
-<h1 class="text-white" style="text-align:center">Home Page</h1>
+<marquee direction="right"><h1 class="text-white" style="text-align:center">Welcome to PizzaShop</h1></marquee>
 
-@foreach (var item in Model)
-{
-    <div class="card float-left m-4 shadow" style="width: 20rem;">
-        <img class="card-img-top p-2" src="/Images/@item.ImageFileName" width="100" height="250" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
-            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Speciality)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.Speciality)</i></p>
-            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
-            <p class="card-text"><b>@Html.DisplayNameFor(model => model.IsVeg)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.IsVeg)</i></p>
-            <input type="button" class="btn btn-outline-secondary rounded-pill" value="ViewDetails" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
-            <input type="button" class="btn btn-primary rounded-pill" value="Order Now" onclick="location.href='@Url.Action("Index", "Order",new { pizzaId = item.PizzaId})'" />
+    @foreach (var item in Model)
+    {
+        <div class="card float-left m-4 shadow" style="width: 20rem;">
+            <img class="card-img-top p-2" src="/Images/@item.ImageFileName" width="100" height="250" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Speciality)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.Speciality)</i></p>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.IsVeg)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.IsVeg)</i></p>
+                <input type="button" class="btn btn-outline-secondary rounded-pill" value="ViewDetails" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
+                <input type="button" class="btn btn-primary rounded-pill" value="Order Now" onclick="location.href='@Url.Action("Index", "Order",new { pizzaId = item.PizzaId})'" />
+            </div>
         </div>
-    </div>
-}
+    }

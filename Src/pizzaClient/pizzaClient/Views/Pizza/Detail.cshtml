@@ -4,38 +4,51 @@
     ViewData["Title"] = "Detail";
 }
 
-<h1>Detail</h1>
+<head>
+    <style>
+        body {
+            background-image: url(/image.jpg);
+            height: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style>
+</head>
 
-<div>
-    <h4>Pizza</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PizzaName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PizzaName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Speciality)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Speciality)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsVeg)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsVeg)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row bg-secondary text-white rounded m-4 p-4">
+    <div class="col-md-6 order-md-6">
+        <img src="/Images/@Html.DisplayFor(model => model.ImageFileName)" alt="" class="w-75 img-thumbnail"/>
+    </div>
+    <div class="col-md-6 order-md-1">
+        <div class="row align-items-center h-100">
+            <div class="col">
+                <h1 class="display-3">@Html.DisplayFor(model => model.PizzaName)</h1>
+                <p class="lead">
+                    <dl>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Speciality)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Speciality)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.IsVeg)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.IsVeg)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Price)
+                        </dd>
+                    </dl>
+                    <input type="button" class="btn btn-danger rounded-pill text-center" value="Back To HomePage" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

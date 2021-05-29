@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Confirm";
+    var pizzaId = TempData["pizzaId"];
 }
 
 <head>
@@ -18,8 +19,10 @@
 </head>
 <div class="bg-white m-4 p-4 rounded">
     <h4 class="text-center">Confirm Details</h4>
+    <p class="text-center text-danger">(Once order placed cannot be Cancelled)</p>
     <hr />
     <form asp-action="SaveOrder">
+        @Html.HiddenFor(model => model.PizzaId)
         <dl class="row">
             <dt class="col-sm-2">
                 Pizza Name
@@ -93,6 +96,7 @@
         </dl>
         <div class="form-group">
             <input type="submit" value="Confirm Order" class="btn btn-primary rounded-pill" />
+            @*<input type="button" value="alter Order" class="btn btn-dark rounded-pill" onclick="location.href = '@Url.Action("Index","Order",pizzaId)'">*@
             <input type="button" class="btn btn-danger rounded-pill" value="Back" onclick="location.href='@Url.Action("Index", "Pizza")'" />
         </div>
     </form>

@@ -16,6 +16,7 @@ namespace pizzaClient.Models
         [Required]
         public string CustomerName { get; set; }
         [Required]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string CustomerPhone { get; set; }
         [Required]
         public string Address { get; set; }
