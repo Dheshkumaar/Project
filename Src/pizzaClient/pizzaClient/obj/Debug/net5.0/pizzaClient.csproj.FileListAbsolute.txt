@@ -284,7 +284,6 @@ C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\ne
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Order\Confirm.cshtml.g.cs
-C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Order\Success.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Pizza\Create.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Pizza\Detail.cshtml.g.cs
@@ -302,3 +301,5 @@ C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\ne
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\ref\pizzaClient.dll
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\pizzaClient.pdb
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\pizzaClient.genruntimeconfig.cache
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Pizza\Home.cshtml.g.cs

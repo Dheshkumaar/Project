@@ -20,24 +20,35 @@ namespace pizzaClient.Controllers
             _repo = repo;
             _pizza = pizza;
         }
-        [HttpGet]
-        public IActionResult Index(int pizzaId)
+        [HttpPost]
+        public IActionResult InitiateOrder(string pizzaIds)
         {
-            Pizza P = _pizza.Get(pizzaId);
-            TempData["pizzaId"] = P.PizzaId;
-            TempData["PizzaName"] = P.PizzaName;
-            TempData["PizzaPrice"] = P.Price;
-            return View();
+            var Ids = pizzaIds.Split(",");
+            Order order = new Order();
+            order.DeliveryDate = DateTime.Now;
+            order.orderDetails = new List<OrderDetails>();
+            foreach (var item in Ids)
+            {
+                Pizza p = _pizza.Get(Convert.ToInt32(item));
+                OrderDetails orderDetails = new OrderDetails();
+                orderDetails.pizzaId = p.PizzaId;
+                orderDetails.PizzaName = p.PizzaName;
+                orderDetails.Price = p.Price;
+                orderDetails.Quantity = 1;
+                order.orderDetails.Add(orderDetails);
+            }            
+            return View("Index", order);
         }
         public IActionResult SaveOrder(Order order) 
         {
             try
             {
+                if(order.AlterOrder == true)
+                {
+                    return View("Index", order);
+                }
                 _repo.AddOrder(order);
-                int pizza_id = order.PizzaId;
-                Pizza p = _pizza.Get(pizza_id);
-                TempData["PizzaName"] = p.PizzaName;
-                return View("Success",order); 
+                return View("Success", order); 
             }
             catch (Exception e)
             {
@@ -48,19 +59,9 @@ namespace pizzaClient.Controllers
         }
         public IActionResult Confirm(Order order)
         {
-            int pizza_id = order.PizzaId;
-            Pizza p = _pizza.Get(pizza_id);
-            TempData["pizza_Id"] = p.PizzaId;
-            TempData["PizzaName"] = p.PizzaName;
-            TempData["PizzaPrice"] = p.Price;
+
             return View(order);
         }
-
-        public ActionResult Success()
-        {
-            return View();
-        }
-
-        
+       
     }
 }

@@ -1,14 +1,13 @@
 ﻿@model pizzaClient.Models.Order
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "InitiateOrder";
 }
-
 <head>
     <style>
         body {
             background-image: url(/image.jpg);
-            height: 500px;
+            height: 700px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -17,105 +16,133 @@
     </style>
 </head>
 <div class="bg-white m-4 p-4 rounded">
-    <h4 class="text-center">Order Details</h4>
+    <h1 class="text-center">OrderDetails</h1>
     <hr />
-    <div class="row m-4 p-4">
-        <div class="col-12">
-            <form name="orderForm" asp-action="Confirm">
-                <div class="col-md-12 float-left w-50">
-                    <input asp-for="PizzaId" type="hidden" value="@TempData["PizzaId"]" />
-                    <div class="form-group">
-                        <label class="control-label">Pizza Name</label>
-                        @Html.TextBox("PizzaName", TempData["PizzaName"], new { disabled = true, @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Pizza Price <i>(per pizza)</i></label>
-                        @Html.TextBox("PizzaPrice", TempData["PizzaPrice"], new { disabled = true, @class = "form-control price" })
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="CustomerName" class="control-label"></label>
-                        <input asp-for="CustomerName" class="form-control" />
-                        <span asp-validation-for="CustomerName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="CustomerPhone" class="control-label"></label>
-                        <input asp-for="CustomerPhone" class="form-control" />
-                        <span asp-validation-for="CustomerPhone" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Address" class="control-label"></label>
-                        <input asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
+    <form asp-action="Confirm">
+        <div class="row">
+            <div class="col-md-6">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="CustomerName" class="control-label"></label>
+                    <input asp-for="CustomerName" class="form-control" />
+                    <span asp-validation-for="CustomerName" class="text-danger"></span>
                 </div>
-                <div class="col-md-12 float-left w-50">
-                    <div class="form-group">
-                        <label asp-for="Amount" class="control-label"></label>
-                        <input asp-for="Amount" class="form-control" disabled/>
-                        @Html.HiddenFor(m=>m.Amount)
-                        <span asp-validation-for="Amount" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Quantity" class="control-label"></label>
-                        <input asp-for="Quantity" class="form-control" onchange="calc()" min="1" max="10" />
-                        <span asp-validation-for="Quantity" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Toppings" class="control-label"></label>
-                        @*<input asp-for="Toppings" onchange="AddTopping()" class="form-control" list="ddlTopping" required />*@
-                        <select asp-for="Toppings" class="form-select form-select-sm" onchange="AddTopping()" required>
-                            <option value="None">None</option>
-                            <option value="Extra cheese">Extra cheese</option>
-                            <option value="Green Leaves">Green Leaves</option>
-                            <option value="Extra Onions">Extra Onions</option>
-                        </select>
-                        <span asp-validation-for="Toppings" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="CrustType" class="control-label"></label>
-                        @*<input asp-for="CrustType" class="form-control" list="ddlCrusting" required />*@
-                        <select asp-for="CrustType" class="form-select form-select-sm" required>
-                            <option value="New hand tosted">New hand tosted</option>
-                            <option value="Wheat thin crust">Wheat thin crust</option>
-                            <option value="Cheese brust">Cheese brust</option>
-                            <option value="Fresh pan pizza">Fresh pan pizza</option>
-                        </select>
-                        <span asp-validation-for="CrustType" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label asp-for="DeliveryDate" class="control-label"></label>
-                        <input asp-for="DeliveryDate" class="form-control" />
-                        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" value="Order Now" class="btn btn-primary rounded-pill" />
-                        <input type="button" class="btn btn-danger rounded-pill" value="Back" onclick="location.href='@Url.Action("Index", "Pizza")'" />
-                    </div>
-                </div> 
-            </form>
-         </div>
-    </div>
+                <div class="form-group">
+                    <label asp-for="CustomerPhone" class="control-label"></label>
+                    <input asp-for="CustomerPhone" class="form-control" />
+                    <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address" class="control-label"></label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    @Html.HiddenFor(m => m.Amount)
+                    (&#x20B9;)<input asp-for="Amount" class="form-control" disabled />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryDate" class="control-label"></label>
+                    <input asp-for="DeliveryDate" class="form-control" />
+                    <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Pizza Name</th>
+                            <th>Pizza Price</th>
+                            <th>Quantity</th>
+                            <th>Toppings</th>
+                            <th>Crust Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            for (var i = 0; i < Model.orderDetails.Count; i++)
+                            {
+                                <tr id="orderDetails">
+                                    @Html.HiddenFor(m => m.orderDetails[i].pizzaId)
+                                    <td>
+                                        @Model.orderDetails[i].PizzaName
+                                        @Html.HiddenFor(m => m.orderDetails[i].PizzaName)
+                                    </td>
+                                    <td>
+                                        &#x20B9;@Model.orderDetails[i].Price
+                                        @Html.HiddenFor(m => m.orderDetails[i].Price, new { @id = "Price" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.orderDetails[i].Quantity, new { @id = "Quantity", @min = "1", @max = "10", @type = "number", @class = "form-control", @onchange = "calculate();" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.orderDetails[i].Toppings,
+                                            new List<SelectListItem> {
+                                            new SelectListItem { Value = "None" , Text = "None" },
+                                            new SelectListItem { Value = "Extra Cheese (Rs.50)" , Text = "Extra Cheese" },
+                                            new SelectListItem { Value = "Green Leaves (Rs.50)" , Text = "Green Leaves" },
+                                            new SelectListItem { Value = "Extra Onions (Rs.50)",  Text="Extra Onions"}
+                                            },
+                                        new { @class = "form-control", @id = "Toppings", @onchange = "calculate();" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.orderDetails[i].CrustType,
+                                            new List<SelectListItem> {
+                                            new SelectListItem { Value = "New hand tosted" , Text = "New hand tosted" },
+                                            new SelectListItem { Value = "Wheat thin crust" , Text = "Wheat thin crust" },
+                                            new SelectListItem { Value = "Cheese brust" , Text = "Cheese brust" },
+                                            new SelectListItem { Value = "Fresh pan pizza",  Text="Fresh pan pizza"}
+                                            },
+                                        new { @class = "form-control", @id = "CrustType" })
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <input type="submit" value="Proceed" class="btn btn-primary" />
+            <input type="button" value="Back to Home" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+        </div>
+    </form>
 </div>
-<script>
-    function calc() {
-        var form = document.forms["orderForm"];
-        var sum = eval(form.Quantity.value) * eval(form.PizzaPrice.value);
-        form.Amount[0].value = form.Amount[1].value = isNaN(sum) ? "" : sum;
-    }
-    function AddTopping() {
-        calc();
-        var form = document.forms["orderForm"];
-        if (form.Toppings.value != "None") 
-            form.Amount[0].value = form.Amount[1].value = eval(form.Amount[1].value) + 50;
-        else
-            form.Amount[0].value = form.Amount[1].value = eval(form.Amount[2].value) - 50;
-    }
-</script>
 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
+
+<script>
+    $(document).ready(function () {
+        calculate();
+    });
     
+    function calculate() {
+        var amount = 0;
+        $("tr").each(function (i,el) {
+            if (i != 0)
+            {
+                var qty = $(el).find('input[id=Quantity]').val();
+                var price = $(el).find('input[id=Price]').val();
+                var total = eval(qty) * eval(price);
+                var toppings = $(el).find('select[id=Toppings]').val();
+                if (toppings != "None") {
+                    var topping = eval(qty) * 50;
+                    total += topping;
+                }
+                amount += total;
+            }        
+        });
+        $("input[id=Amount]")[0].value = $("input[id=Amount]")[1].value = amount;
+    }
+</script>
+

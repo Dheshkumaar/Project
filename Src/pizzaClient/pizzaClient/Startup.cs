@@ -52,7 +52,7 @@ namespace pizzaClient
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+                    pattern: "{controller=Pizza}/{action=Home}/{id?}");
             });
         }
     }

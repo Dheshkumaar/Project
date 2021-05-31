@@ -23,6 +23,10 @@ namespace pizzaClient.Models
         public string Toppings { get; set; }
         [Required]
         public string CrustType { get; set; }
+        [NotMapped]
+        public string PizzaName { get; set; }
+        [NotMapped]
+        public double Price { get; set; }   
 
     }
 }

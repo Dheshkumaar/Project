@@ -34,6 +34,11 @@ namespace pizzaClient.Controllers
             }
         }
 
+        public ActionResult Home()
+        {
+            return View();
+        }
+
         
 
         // GET: PizzaController/Create

@@ -14,22 +14,63 @@
             background-size: cover;
             position: relative;
         }
+        .big-check-box {
+            height: 20px;
+            width: 20px;
+            margin-left: -15px;
+            margin-top: 12px;
+        }
+        .order{
+            text-align: right;
+        }
     </style>
 </head>
 
-<marquee direction="right"><h1 class="text-white" style="text-align:center">Welcome to PizzaShop</h1></marquee>
-
+@using (Html.BeginForm("InitiateOrder", "Order", FormMethod.Post, new { id = "pizzalist"}))
+{ 
+    <header class=" order">
+        <div class="row">
+            <div class="col-11">
+                <h3 class="text-white text-center" direction="right">Welcome To PizzaStore </h3>
+            </div>
+            <div class="col-1">
+                <input type="button" class="btn btn-primary rounded" value="Order Now" onclick="orderNow()" />
+                <input type="hidden" id="selectedPizza">
+            </div>
+        </div>    
+    </header>
     @foreach (var item in Model)
     {
-        <div class="card float-left m-4 shadow" style="width: 20rem;">
+        <div class="card float-left form-check m-3 " style="width: 20rem;">
+            <input type="checkbox" class="big-check-box form-check-input" name="@item.PizzaId">
             <img class="card-img-top p-2" src="/Images/@item.ImageFileName" width="100" height="250" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
-                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Speciality)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.Speciality)</i></p>
-                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
-                <p class="card-text"><b>@Html.DisplayNameFor(model => model.IsVeg)</b>:&nbsp;<i>@Html.DisplayFor(modelItem => item.IsVeg)</i></p>
-                <input type="button" class="btn btn-outline-secondary rounded-pill" value="ViewDetails" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
-                <input type="button" class="btn btn-primary rounded-pill" value="Order Now" onclick="location.href='@Url.Action("Index", "Order",new { pizzaId = item.PizzaId})'" />
-            </div>
+                <div class="card-body">
+                    <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
+                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;&#x20B9;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
+                    <input type="button" class="btn btn-outline-secondary rounded-pill" value="ViewDetails" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
+                </div>
         </div>
     }
+}
+
+
+<script>
+    function orderNow() {
+
+        var selected = [];
+        $('.big-check-box:checked').each(function () {
+            selected.push($(this).attr('name'));
+        });
+        if (selected.length == 0) {
+            alert('Select any pizza to order.');
+            return false;
+        }
+        var selectedPizza = selected.join(",");
+        $('#SelectedPizza').val(selectedPizza);
+
+        var action = $('#pizzalist').attr("action");
+        action += '?pizzaIds=' + selectedPizza;
+        $('#pizzalist').attr("action", action);
+        $('#pizzalist').submit();        
+    }
+</script>

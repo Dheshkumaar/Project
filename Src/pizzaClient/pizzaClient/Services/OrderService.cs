@@ -24,14 +24,7 @@ namespace pizzaClient.Services
             {
                 _context.Orders.Add(o);
                 _context.SaveChanges();
-
-                var orderDetails = new OrderDetails();
-                orderDetails.OrderId = o.OrderId;
-                orderDetails.pizzaId = o.PizzaId;
-                orderDetails.Quantity = o.Quantity;
-                orderDetails.Toppings = o.Toppings;
-                orderDetails.CrustType = o.CrustType;
-                AddOrderDetail(orderDetails);
+                AddOrderDetail(o.orderDetails,o.OrderId);
             }
             catch (Exception e)
             {
@@ -39,11 +32,15 @@ namespace pizzaClient.Services
             }
 
         }
-        private void AddOrderDetail(OrderDetails odt)
+        private void AddOrderDetail(List<OrderDetails> odt,int orderId)
         {
             try
             {
-                _context.OrderDetails.Add(odt);
+                foreach (var item in odt)
+                {
+                    item.OrderId = orderId;
+                    _context.OrderDetails.Add(item);
+                }                
                 _context.SaveChanges();
             }
             catch (Exception e)
