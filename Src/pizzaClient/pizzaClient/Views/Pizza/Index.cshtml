@@ -31,7 +31,7 @@
     <header class=" order">
         <div class="row">
             <div class="col-11">
-                <h3 class="text-white text-center" direction="right">Welcome To PizzaStore </h3>
+                <h3 class="text-white text-center">Welcome To Pizza Store </h3>
             </div>
             <div class="col-1">
                 <input type="button" class="btn btn-primary rounded" value="Order Now" onclick="orderNow()" />
@@ -44,11 +44,12 @@
         <div class="card float-left form-check m-3 " style="width: 20rem;">
             <input type="checkbox" class="big-check-box form-check-input" name="@item.PizzaId">
             <img class="card-img-top p-2" src="/Images/@item.ImageFileName" width="100" height="250" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
-                    <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;&#x20B9;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
-                    <input type="button" class="btn btn-outline-secondary rounded-pill" value="ViewDetails" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
-                </div>
+            <div class="card-body">
+                <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;&#x20B9;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.IsVeg):</b>&nbsp;<i>@Html.DisplayFor(modelItem => item.IsVeg)</i></p>
+                <input type="button" class="btn btn-outline-secondary rounded-pill" value="View Details" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
+            </div>
         </div>
     }
 }

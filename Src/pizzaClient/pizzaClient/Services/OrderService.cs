@@ -18,13 +18,13 @@ namespace pizzaClient.Services
             _Logger = logger;
         }
 
-        public void AddOrder(Order o)
+        public void AddOrder(Order order)
         {
             try
             {
-                _context.Orders.Add(o);
+                _context.Orders.Add(order);
                 _context.SaveChanges();
-                AddOrderDetail(o.orderDetails,o.OrderId);
+                AddOrderDetail(order.orderDetails,order.OrderId);
             }
             catch (Exception e)
             {
@@ -32,11 +32,11 @@ namespace pizzaClient.Services
             }
 
         }
-        private void AddOrderDetail(List<OrderDetails> odt,int orderId)
+        private void AddOrderDetail(List<OrderDetails> orderdetail,int orderId)
         {
             try
             {
-                foreach (var item in odt)
+                foreach (var item in orderdetail)
                 {
                     item.OrderId = orderId;
                     _context.OrderDetails.Add(item);

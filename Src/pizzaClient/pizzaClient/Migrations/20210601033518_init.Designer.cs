@@ -10,7 +10,7 @@ using pizzaClient.Models;
 namespace pizzaClient.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20210528051843_init")]
+    [Migration("20210601033518_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,14 +30,16 @@ namespace pizzaClient.Migrations
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
                     b.Property<string>("CustomerName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("CustomerPhone")
                         .IsRequired()

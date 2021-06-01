@@ -39,8 +39,6 @@ namespace pizzaClient.Controllers
             return View();
         }
 
-        
-
         // GET: PizzaController/Create
         public ActionResult Create()
         {

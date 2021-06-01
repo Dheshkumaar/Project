@@ -13,10 +13,17 @@
             background-size: cover;
             position: relative;
         }
+        .field-validation-valid {
+            display: none;
+        }
+
+        .validation-summary-valid {
+            display: none;
+        }
     </style>
 </head>
 <div class="bg-white m-4 p-4 rounded">
-    <h1 class="text-center">OrderDetails</h1>
+    <h1 class="text-center">Order Details</h1>
     <hr />
     <form asp-action="Confirm">
         <div class="row">
@@ -34,7 +41,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Address" class="control-label"></label>
-                    <input asp-for="Address" class="form-control" />
+                    <textarea asp-for="Address" class="form-control"></textarea>
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
             </div>
@@ -80,14 +87,15 @@
                                     </td>
                                     <td>
                                         @Html.TextBoxFor(m => m.orderDetails[i].Quantity, new { @id = "Quantity", @min = "1", @max = "10", @type = "number", @class = "form-control", @onchange = "calculate();" })
+                                        @Html.ValidationMessageFor(m => m.orderDetails[i].Quantity, "Quantity must between  0 and 10.", new { @class = "text-danger" })
                                     </td>
                                     <td>
                                         @Html.DropDownListFor(m => m.orderDetails[i].Toppings,
                                             new List<SelectListItem> {
                                             new SelectListItem { Value = "None" , Text = "None" },
-                                            new SelectListItem { Value = "Extra Cheese (Rs.50)" , Text = "Extra Cheese" },
-                                            new SelectListItem { Value = "Green Leaves (Rs.50)" , Text = "Green Leaves" },
-                                            new SelectListItem { Value = "Extra Onions (Rs.50)",  Text="Extra Onions"}
+                                            new SelectListItem { Value = "Extra Cheese (Rs.30)" , Text = "Extra Cheese (Rs.30)" },
+                                            new SelectListItem { Value = "Green Leaves (Rs.30)" , Text = "Green Leaves (Rs.30)" },
+                                            new SelectListItem { Value = "Extra Onions (Rs.30)",  Text="Extra Onions (Rs.30)"}
                                             },
                                         new { @class = "form-control", @id = "Toppings", @onchange = "calculate();" })
                                     </td>
@@ -97,7 +105,7 @@
                                             new SelectListItem { Value = "New hand tosted" , Text = "New hand tosted" },
                                             new SelectListItem { Value = "Wheat thin crust" , Text = "Wheat thin crust" },
                                             new SelectListItem { Value = "Cheese brust" , Text = "Cheese brust" },
-                                            new SelectListItem { Value = "Fresh pan pizza",  Text="Fresh pan pizza"}
+                                            new SelectListItem { Value = "Fresh pan pizza",  Text="Fresh pan Crust"}
                                             },
                                         new { @class = "form-control", @id = "CrustType" })
                                     </td>
@@ -110,7 +118,7 @@
         </div>
         <div class="form-group text-center">
             <input type="submit" value="Proceed" class="btn btn-primary" />
-            <input type="button" value="Back to Home" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+            <input type="button" value="Back to Menu" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Pizza")'" />
         </div>
     </form>
 </div>
@@ -136,7 +144,7 @@
                 var total = eval(qty) * eval(price);
                 var toppings = $(el).find('select[id=Toppings]').val();
                 if (toppings != "None") {
-                    var topping = eval(qty) * 50;
+                    var topping = eval(qty) * 30;
                     total += topping;
                 }
                 amount += total;
@@ -144,5 +152,8 @@
         });
         $("input[id=Amount]")[0].value = $("input[id=Amount]")[1].value = amount;
     }
+</script>
+<script>
+
 </script>
 
