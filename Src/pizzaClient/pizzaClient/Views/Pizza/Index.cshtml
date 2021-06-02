@@ -8,7 +8,7 @@
     <style>
         body {
             background-image: url(/image.jpg);
-            height: 500px;
+            height: 1000px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -47,8 +47,17 @@
             <div class="card-body">
                 <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
                 <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;&#x20B9;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
-                <p class="card-text"><b>@Html.DisplayNameFor(model => model.IsVeg):</b>&nbsp;<i>@Html.DisplayFor(modelItem => item.IsVeg)</i></p>
-                <input type="button" class="btn btn-outline-secondary rounded-pill" value="View Details" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
+                <p>
+                    @if (item.IsVeg == true)
+                    {
+                        <span class="badge badge-success">Veg</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Non Veg</span>
+                    }
+                </p>
+                <input type="button" class="btn btn-outline-secondary rounded" value="View Details" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
             </div>
         </div>
     }

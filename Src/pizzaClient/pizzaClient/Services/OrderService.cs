@@ -11,13 +11,11 @@ namespace pizzaClient.Services
     {
         readonly PizzaContext _context;
         readonly ILogger<OrderService> _Logger;
-
         public OrderService(PizzaContext context, ILogger<OrderService> logger)
         {
             _context = context;
             _Logger = logger;
         }
-
         public void AddOrder(Order order)
         {
             try

@@ -8,7 +8,7 @@
     <style>
         body {
             background-image: url(/image.jpg);
-            height: 500px;
+            height: 1000px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -27,6 +27,16 @@
                 <h1 class="display-3">@Html.DisplayFor(model => model.PizzaName)</h1>
                 <p class="lead">
                     <dl>
+                        <dd class="col-sm-12">
+                            @if (Model.IsVeg == true)
+                            {
+                                <span class="badge badge-success">Veg</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Non Veg</span>
+                            }
+                        </dd>
                         <dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Speciality)
                         </dt>
@@ -34,19 +44,20 @@
                             @Html.DisplayFor(model => model.Speciality)
                         </dd>
                         <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.IsVeg)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.IsVeg)
-                        </dd>
-                        <dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Price)
                         </dt>
                         <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.Price)
+                            &#x20B9;@Html.DisplayFor(model => model.Price)
                         </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.PizzaDescription)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.PizzaDescription)
+                        </dd>
+
                     </dl>
-                    <input type="button" class="btn btn-danger rounded-pill text-center" value="Back To Menu" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+                    <input type="button" class="btn btn-danger rounded" value="Back To Menu" onclick="location.href='@Url.Action("Index", "Pizza")'" />
                 </p>
             </div>
         </div>

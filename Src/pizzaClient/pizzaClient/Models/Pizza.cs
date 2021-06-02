@@ -20,6 +20,10 @@ namespace pizzaClient.Models
         public bool IsVeg { get; set; }
         [Required]
         public double Price { get; set; }
+        [DisplayName("Description")]
+        [Required]
+        public string PizzaDescription { get; set; }
+        [Required]
         public string ImageFileName { get; set; }
     }
 }

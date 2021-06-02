@@ -11,18 +11,16 @@ namespace pizzaClient.Services
     {
         readonly PizzaContext _context;
         readonly ILogger<PizzaService> _Logger;
-
         public PizzaService(PizzaContext context, ILogger<PizzaService> logger)
         {
             _context = context;
             _Logger = logger;
         }
-
-        public void Add(Pizza t)
+        public void Add(Pizza pizza)
         {
             try
             {
-                _context.Pizzas.Add(t);
+                _context.Pizzas.Add(pizza);
                 _context.SaveChanges();
             }
             catch (Exception e)
@@ -30,12 +28,11 @@ namespace pizzaClient.Services
                 _Logger.LogDebug(e.Message);
             }
         }
-
-        public void Delete(Pizza t)
+        public void Delete(Pizza pizza)
         {
             try
             {
-                _context.Pizzas.Remove(t);
+                _context.Pizzas.Remove(pizza);
                 _context.SaveChanges();
             }
             catch (Exception e)
@@ -43,7 +40,6 @@ namespace pizzaClient.Services
                 _Logger.LogDebug(e.Message);
             }
         }
-
         public Pizza Get(int id)
         {
             try
@@ -57,7 +53,6 @@ namespace pizzaClient.Services
             }
             return null;
         }
-
         public IEnumerable<Pizza> GetAll()
         {
             try
@@ -74,18 +69,17 @@ namespace pizzaClient.Services
             }
             return null;
         }
-
-        public void Update(int id, Pizza t)
+        public void Update(int id, Pizza pizza)
         {
             try
             {
                 Pizza Pizza = Get(id);
                 if (Pizza != null)
                 {
-                    Pizza.PizzaName = t.PizzaName;
-                    Pizza.Price = t.Price;
-                    Pizza.Speciality = t.Speciality;
-                    Pizza.IsVeg = t.IsVeg;
+                    Pizza.PizzaName = pizza.PizzaName;
+                    Pizza.Price = pizza.Price;
+                    Pizza.Speciality = pizza.Speciality;
+                    Pizza.IsVeg = pizza.IsVeg;
                 }
                 _context.SaveChanges();
             }

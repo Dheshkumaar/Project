@@ -15,7 +15,7 @@ namespace pizzaClient.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     CustomerPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Amount = table.Column<double>(type: "float", nullable: false),
                     DeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -34,7 +34,8 @@ namespace pizzaClient.Migrations
                     Speciality = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsVeg = table.Column<bool>(type: "bit", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    ImageFileName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    PizzaDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageFileName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

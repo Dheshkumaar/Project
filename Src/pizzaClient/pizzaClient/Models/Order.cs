@@ -23,6 +23,7 @@ namespace pizzaClient.Models
         public string CustomerPhone { get; set; }
         [Required]
         [StringLength(80,MinimumLength = 10, ErrorMessage = "Must be at least 10 characters long.")]
+        [DisplayName("Customer Address")]
         public string Address { get; set; }
         [Required]
         public double Amount { get; set; }
