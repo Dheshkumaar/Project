@@ -1,9 +1,8 @@
 ﻿@model IEnumerable<pizzaClient.Models.Pizza>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Veg";
 }
-
 <head>
     <style>
         body {
@@ -14,30 +13,32 @@
             background-size: cover;
             position: relative;
         }
+
         .big-check-box {
             height: 20px;
             width: 20px;
             margin-left: -15px;
             margin-top: 12px;
         }
-        .order{
+
+        .order {
             text-align: right;
         }
     </style>
 </head>
 
-@using (Html.BeginForm("InitiateOrder", "Order", FormMethod.Post, new { id = "pizzalist"}))
-{ 
+@using (Html.BeginForm("InitiateOrder", "Order", FormMethod.Post, new { id = "pizzalist" }))
+{
     <header class=" order">
         <div class="row">
             <div class="col-11">
-                <h3 class="text-white text-center">Welcome To Pizza Store </h3>
+                <h3 class="text-white text-center">Vegetarian Pizzas</h3>
             </div>
             <div class="col-1">
                 <input type="button" class="btn btn-primary rounded" value="Order Now" onclick="orderNow()" />
                 <input type="hidden" id="selectedPizza">
             </div>
-        </div>    
+        </div>
     </header>
     @foreach (var item in Model)
     {
@@ -47,22 +48,12 @@
             <div class="card-body">
                 <h5 class="card-title"><i>@Html.DisplayFor(modelItem => item.PizzaName)</i></h5>
                 <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price):</b>&nbsp;&#x20B9;<i>@Html.DisplayFor(modelItem => item.Price)</i></p>
-                <p>
-                    @if (item.IsVeg == true)
-                    {
-                        <span class="badge badge-success">Veg</span>
-                    }
-                    else
-                    {
-                        <span class="badge badge-danger">Non Veg</span>
-                    }
-                </p>
-                <input type="button" class="btn btn-outline-secondary rounded" value="View Details" onclick="location.href='@Url.Action("Detail", "Pizza",new { id = item.PizzaId})'" />
+                <p><span class="badge badge-success">Veg</span></p>
+                <input type="button" class="btn btn-outline-secondary rounded" value="View Details" onclick="location.href='@Url.Action("VegPizzaDetails", "Veg",new { id = item.PizzaId})'" />
             </div>
         </div>
     }
 }
-
 
 <script>
     function orderNow() {
@@ -81,6 +72,7 @@
         var action = $('#pizzalist').attr("action");
         action += '?pizzaIds=' + selectedPizza;
         $('#pizzalist').attr("action", action);
-        $('#pizzalist').submit();        
+        $('#pizzalist').submit();
     }
 </script>
+

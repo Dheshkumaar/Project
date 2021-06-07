@@ -303,3 +303,7 @@ C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\ne
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\pizzaClient.genruntimeconfig.cache
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Pizza\Home.cshtml.g.cs
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Veg\VegPizza.cshtml.g.cs
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Veg\NonVegPizza.cshtml.g.cs
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Veg\VegPizzaDetails.cshtml.g.cs
+C:\Users\DHESH KUMAAR A\Desktop\Project\Src\PizzaClient\pizzaClient\obj\Debug\net5.0\Razor\Views\Veg\NonVegPizzaDetails.cshtml.g.cs

@@ -16,9 +16,5 @@ crisp capsicum, succulent mushrooms, juicyfresh tomatoes and jalapeno - with ext
 insert into Pizzas values('Chicken Dominator','sauce','false',249,'Chicken Dominator is one of the greatest masterpieces. Every slice of this delicious pizza is 
 loaded with flavorful toppings of BBQ Chicken, Spicy Chicken, delicate Chicken Rasher and juicy Chicken Sausage.','5.jpg')
 
-Truncate table Pizzas
-Truncate Table Orders
-Truncate table OrderDetails
-
 drop database dbPizzaOrder
 

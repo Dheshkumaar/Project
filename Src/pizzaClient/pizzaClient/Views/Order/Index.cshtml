@@ -7,7 +7,7 @@
     <style>
         body {
             background-image: url(/image.jpg);
-            height: 1000px;
+            height: 900px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -16,7 +16,6 @@
         .field-validation-valid {
             display: none;
         }
-
         .validation-summary-valid {
             display: none;
         }
@@ -87,7 +86,7 @@
                                     </td>
                                     <td>
                                         @Html.TextBoxFor(m => m.orderDetails[i].Quantity, new { @id = "Quantity", @min = "1", @max = "10", @type = "number", @class = "form-control", @onchange = "calculate();" })
-                                        @Html.ValidationMessageFor(m => m.orderDetails[i].Quantity, "Quantity must between  0 and 10.", new { @class = "text-danger" })
+                                        @Html.ValidationMessageFor(m => m.orderDetails[i].Quantity, "Quantity must between  1 and 10.", new { @class = "text-danger" })
                                     </td>
                                     <td>
                                         @Html.DropDownListFor(m => m.orderDetails[i].Toppings,
@@ -105,7 +104,7 @@
                                             new SelectListItem { Value = "New hand tosted" , Text = "New hand tosted" },
                                             new SelectListItem { Value = "Wheat thin crust" , Text = "Wheat thin crust" },
                                             new SelectListItem { Value = "Cheese brust" , Text = "Cheese brust" },
-                                            new SelectListItem { Value = "Fresh pan pizza",  Text="Fresh pan Crust"}
+                                            new SelectListItem { Value = "Fresh pan Crust",  Text="Fresh pan Crust"}
                                             },
                                         new { @class = "form-control", @id = "CrustType" })
                                     </td>
@@ -153,7 +152,5 @@
         $("input[id=Amount]")[0].value = $("input[id=Amount]")[1].value = amount;
     }
 </script>
-<script>
 
-</script>
 

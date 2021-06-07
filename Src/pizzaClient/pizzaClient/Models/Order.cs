@@ -18,8 +18,8 @@ namespace pizzaClient.Models
         [DisplayName("Customer Name")]
         public string CustomerName { get; set; }
         [Required]
-        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Not a valid phone number")]
-        [DisplayName("Customer Phone")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Not a valid mobile number")]
+        [DisplayName("Mobile Number")]
         public string CustomerPhone { get; set; }
         [Required]
         [StringLength(80,MinimumLength = 10, ErrorMessage = "Must be at least 10 characters long.")]
