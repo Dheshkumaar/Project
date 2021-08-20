@@ -1,0 +1,36 @@
+﻿body {
+    background-image: url(/image.jpg);
+    height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.big-check-box {
+    height: 20px;
+    width: 20px;
+    margin-left: -15px;
+    margin-top: 12px;
+}
+.moving-left {
+    position: relative;
+    transition: transform 0.3s ease;
+    transform: translateX(0px);
+    width: 100px;
+}
+
+.moving-left:hover {
+    transform: translateX(5px);
+}
+.order {
+    text-align: right;
+} 
+.moving-down {
+    position: relative;
+    transition: transform 0.3s ease;
+    transform: translateY(0px);
+}
+
+.moving-down:hover {
+    transform: translateY(5px);
+}

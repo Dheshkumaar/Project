@@ -1,5 +1,9 @@
 select * from Pizzas
 
+select * from Crust
+
+select * from Toppings
+
 select * from Orders
 
 select * from OrderDetails
@@ -15,6 +19,16 @@ insert into Pizzas values('Veg Extravaganza','cheese','true',299,'A pizza that d
 crisp capsicum, succulent mushrooms, juicyfresh tomatoes and jalapeno - with extra cheese to go all around.','4.jpg')
 insert into Pizzas values('Chicken Dominator','sauce','false',249,'Chicken Dominator is one of the greatest masterpieces. Every slice of this delicious pizza is 
 loaded with flavorful toppings of BBQ Chicken, Spicy Chicken, delicate Chicken Rasher and juicy Chicken Sausage.','5.jpg')
+
+insert into Crust values('New hand tosted')
+insert into Crust values('Wheat thin crust')
+insert into Crust values('Cheese brust')
+insert into Crust values('Fresh pan Crust')
+
+insert into Toppings values('None')
+insert into Toppings values('Extra Cheese (Rs.30)')
+insert into Toppings values('Green Leaves (Rs.30)')
+insert into Toppings values('Extra Onions (Rs.30)')
 
 drop database dbPizzaOrder
 

@@ -5,7 +5,6 @@ using pizzaClient.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace pizzaClient.Controllers
 {
@@ -22,7 +21,7 @@ namespace pizzaClient.Controllers
         {
             try
             {
-                List<Pizza> pizzaDetails = _repo.GetAll().Where(i =>i.IsVeg == true).ToList();
+                List<Pizza> pizzaDetails = _repo.GetAll().Where(i => i.IsVeg == true).ToList();
                 return View(pizzaDetails);
             }
             catch (Exception e)
@@ -36,7 +35,7 @@ namespace pizzaClient.Controllers
             try
             {
                 List<Pizza> pizzaDetails = _repo.GetAll().Where(i => i.IsVeg == false).ToList();
-                return View("NonVegPizza",pizzaDetails);
+                return View("NonVegPizza", pizzaDetails);
             }
             catch (Exception e)
             {

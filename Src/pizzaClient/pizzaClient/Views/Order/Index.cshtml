@@ -5,14 +5,6 @@
 }
 <head>
     <style>
-        body {
-            background-image: url(/image.jpg);
-            height: 900px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-        }
         .field-validation-valid {
             display: none;
         }
@@ -20,6 +12,7 @@
             display: none;
         }
     </style>
+    <link href="~/css/Style.css" rel="stylesheet" />
 </head>
 <div class="bg-white m-4 p-4 rounded">
     <h1 class="text-center">Order Details</h1>
@@ -29,18 +22,18 @@
             <div class="col-md-6">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="CustomerName" class="control-label"></label>
-                    <input asp-for="CustomerName" class="form-control" />
+                    <label asp-for="CustomerName" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
+                    <input asp-for="CustomerName" class="form-control" placeholder="Enter Customer Name"/>
                     <span asp-validation-for="CustomerName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CustomerPhone" class="control-label"></label>
-                    <input asp-for="CustomerPhone" class="form-control" />
+                    <label asp-for="CustomerPhone" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
+                    <input asp-for="CustomerPhone" class="form-control" placeholder="Enter Mobile Number"/>
                     <span asp-validation-for="CustomerPhone" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Address" class="control-label"></label>
-                    <textarea asp-for="Address" class="form-control"></textarea>
+                    <label asp-for="Address" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
+                    <input asp-for="Address" class="form-control" placeholder="Enter Address"/>
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
             </div>
@@ -52,9 +45,23 @@
                     <span asp-validation-for="Amount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="DeliveryDate" class="control-label"></label>
+                    <label asp-for="DeliveryDate" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
                     <input asp-for="DeliveryDate" class="form-control" />
                     <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="City" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
+                        <input asp-for="City" class="form-control" placeholder="Enter Area/City" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Pincode" class="control-label"></label><sup class="text-danger">&nbsp;*</sup>
+                            <input asp-for="Pincode" class="form-control" placeholder="Enter Pincode" />
+                            <span asp-validation-for="Pincode" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,22 +97,12 @@
                                     </td>
                                     <td>
                                         @Html.DropDownListFor(m => m.orderDetails[i].Toppings,
-                                            new List<SelectListItem> {
-                                            new SelectListItem { Value = "None" , Text = "None" },
-                                            new SelectListItem { Value = "Extra Cheese (Rs.30)" , Text = "Extra Cheese (Rs.30)" },
-                                            new SelectListItem { Value = "Green Leaves (Rs.30)" , Text = "Green Leaves (Rs.30)" },
-                                            new SelectListItem { Value = "Extra Onions (Rs.30)",  Text="Extra Onions (Rs.30)"}
-                                            },
+                                            new SelectList(ViewBag.Toppings, "ToppingName", "ToppingName"),
                                         new { @class = "form-control", @id = "Toppings", @onchange = "calculate();" })
                                     </td>
                                     <td>
                                         @Html.DropDownListFor(m => m.orderDetails[i].CrustType,
-                                            new List<SelectListItem> {
-                                            new SelectListItem { Value = "New hand tosted" , Text = "New hand tosted" },
-                                            new SelectListItem { Value = "Wheat thin crust" , Text = "Wheat thin crust" },
-                                            new SelectListItem { Value = "Cheese brust" , Text = "Cheese brust" },
-                                            new SelectListItem { Value = "Fresh pan Crust",  Text="Fresh pan Crust"}
-                                            },
+                                            new SelectList(ViewBag.Crust, "CrustName", "CrustName"),
                                         new { @class = "form-control", @id = "CrustType" })
                                     </td>
                                 </tr>
@@ -116,8 +113,8 @@
             </div>
         </div>
         <div class="form-group text-center">
-            <input type="submit" value="Proceed" class="btn btn-primary" />
-            <input type="button" value="Back to Menu" class="btn btn-danger" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+            <input type="submit" value="Proceed" class="btn btn-primary moving-down" />
+            <input type="button" value="Back to Menu" class="btn btn-danger moving-down" onclick="location.href='@Url.Action("Index", "Pizza")'" />
         </div>
     </form>
 </div>

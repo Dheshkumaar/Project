@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace pizzaClient.Models
 {
-    public class PizzaContext:DbContext
+    public class PizzaContext : DbContext
     {
         public PizzaContext() : base()
         {
@@ -18,5 +14,7 @@ namespace pizzaClient.Models
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Crust> Crust { get; set; }
+        public DbSet<Toppings> Toppings { get; set; }
     }
 }

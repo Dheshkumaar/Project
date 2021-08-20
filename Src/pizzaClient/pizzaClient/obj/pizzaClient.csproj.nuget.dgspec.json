@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\PizzaClient\\pizzaClient\\pizzaClient.csproj": {}
+    "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\pizzaClient\\pizzaClient\\pizzaClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\PizzaClient\\pizzaClient\\pizzaClient.csproj": {
+    "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\pizzaClient\\pizzaClient\\pizzaClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\PizzaClient\\pizzaClient\\pizzaClient.csproj",
+        "projectUniqueName": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\pizzaClient\\pizzaClient\\pizzaClient.csproj",
         "projectName": "pizzaClient",
-        "projectPath": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\PizzaClient\\pizzaClient\\pizzaClient.csproj",
+        "projectPath": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\pizzaClient\\pizzaClient\\pizzaClient.csproj",
         "packagesPath": "C:\\Users\\DHESH KUMAAR A\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\PizzaClient\\pizzaClient\\obj\\",
+        "outputPath": "C:\\Users\\DHESH KUMAAR A\\Desktop\\Project\\Src\\pizzaClient\\pizzaClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DHESH KUMAAR A\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5,21 +5,12 @@
 }
 
 <head>
-    <style>
-        body {
-            background-image: url(/image.jpg);
-            height: 1000px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-        }
-    </style>
+    <link href="~/css/Style.css" rel="stylesheet" />
 </head>
 
 <div class="row bg-white text-dark rounded m-4 p-4">
     <div class="col-md-6 order-md-6">
-        <img src="/Images/@Html.DisplayFor(model => model.ImageFileName)" alt="" class="w-75 img-thumbnail"/>
+        <img src="/Images/@Html.DisplayFor(model => model.ImageFileName)" alt="" class="w-75 img-thumbnail moving-down"/>
     </div>
     <div class="col-md-6 order-md-1">
         <div class="row align-items-center h-100">
@@ -57,7 +48,7 @@
                         </dd>
 
                     </dl>
-                    <input type="button" class="btn btn-danger rounded" value="Back To Menu" onclick="location.href='@Url.Action("Index", "Pizza")'" />
+                    <input type="button" class="btn btn-danger rounded moving-down" value="Back To Menu" onclick="location.href='@Url.Action("Index", "Pizza")'" />
                 </p>
             </div>
         </div>

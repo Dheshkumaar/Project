@@ -2,12 +2,10 @@
 using pizzaClient.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace pizzaClient.Services
 {
-    public class OrderService:IOrder<Order>
+    public class OrderService : IOrder<Order>
     {
         readonly PizzaContext _context;
         readonly ILogger<OrderService> _Logger;
@@ -22,15 +20,14 @@ namespace pizzaClient.Services
             {
                 _context.Orders.Add(order);
                 _context.SaveChanges();
-                AddOrderDetail(order.orderDetails,order.OrderId);
+                AddOrderDetail(order.orderDetails, order.OrderId);
             }
             catch (Exception e)
             {
                 _Logger.LogDebug(e.Message);
             }
-
         }
-        private void AddOrderDetail(List<OrderDetails> orderdetail,int orderId)
+        private void AddOrderDetail(List<OrderDetails> orderdetail, int orderId)
         {
             try
             {
@@ -38,7 +35,7 @@ namespace pizzaClient.Services
                 {
                     item.OrderId = orderId;
                     _context.OrderDetails.Add(item);
-                }                
+                }
                 _context.SaveChanges();
             }
             catch (Exception e)

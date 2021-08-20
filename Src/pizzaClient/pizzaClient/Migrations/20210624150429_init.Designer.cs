@@ -10,7 +10,7 @@ using pizzaClient.Models;
 namespace pizzaClient.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20210601134330_init")]
+    [Migration("20210624150429_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,21 @@ namespace pizzaClient.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("pizzaClient.Models.Crust", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CrustName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Crust");
+                });
 
             modelBuilder.Entity("pizzaClient.Models.Order", b =>
                 {
@@ -36,6 +51,11 @@ namespace pizzaClient.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.Property<string>("CustomerName")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -47,6 +67,10 @@ namespace pizzaClient.Migrations
 
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Pincode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderId");
 
@@ -118,6 +142,21 @@ namespace pizzaClient.Migrations
                     b.HasKey("PizzaId");
 
                     b.ToTable("Pizzas");
+                });
+
+            modelBuilder.Entity("pizzaClient.Models.Toppings", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ToppingName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Toppings");
                 });
 
             modelBuilder.Entity("pizzaClient.Models.OrderDetails", b =>

@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using pizzaClient.Models;
 using pizzaClient.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace pizzaClient.Controllers
 {
@@ -60,7 +58,7 @@ namespace pizzaClient.Controllers
                 _logger.LogDebug(e.Message);
                 return RedirectToAction("Error", "Home");
             }
-            
+
         }
         [HttpGet]
         public IActionResult Detail(int id)
@@ -75,7 +73,7 @@ namespace pizzaClient.Controllers
                 _logger.LogDebug(e.Message);
                 return RedirectToAction("Error", "Home");
             }
-            
+
         }
     }
 }
